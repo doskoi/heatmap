@@ -10,13 +10,20 @@ export default {
   data () {
     return {
       chartData: null,
-      stock: null
+      stock: null,
+      chartSettings: null
     }
   },
   created () {
     this.getStock()
+    this.refresh()
   },
   methods: {
+    refresh () {
+      setInterval(() => {
+        this.getStock()
+      }, 3000)
+    },
     getStock () {
       fetchList().then(response => {
         this.chartData = {
@@ -24,8 +31,14 @@ export default {
           rows: response.data
         }
         this.chartSettings = {
+          dimension: ['chg'],
           metrics: ['num'],
-          dimension: ['chg']
+          area: true,
+          label: {formatter: '{a} %'},
+          labelMap: {
+            num: '数量',
+            chg: '涨跌幅'
+          }
         }
       }).catch(err => {
         console.log(err)

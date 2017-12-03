@@ -3,10 +3,12 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import VCharts from 'v-charts'
 import App from './App'
 import router from './router'
 
 Vue.use(ElementUI)
+Vue.use(VCharts)
 
 Vue.config.productionTip = false
 

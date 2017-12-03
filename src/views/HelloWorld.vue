@@ -1,7 +1,5 @@
 <template>
-  <div class="hello">
-    <ve-heatmap :data="chartData"></ve-heatmap>
-  </div>
+  <ve-line :data="chartData" :settings="chartSettings"></ve-line>
 </template>
 
 <script>
@@ -22,10 +20,13 @@ export default {
     getStock () {
       fetchList().then(response => {
         this.chartData = {
-          columns: ['code', 'chg'],
+          columns: ['chg', 'num'],
           rows: response.data
         }
-        console.log(self.stock)
+        this.chartSettings = {
+          metrics: ['num'],
+          dimension: ['chg']
+        }
       }).catch(err => {
         console.log(err)
       })

@@ -1,5 +1,5 @@
 <template>
-  <ve-line :data="chartData" :settings="chartSettings"></ve-line>
+  <ve-histogram :data="chartData" :settings="chartSettings"></ve-histogram>
 </template>
 
 <script>
@@ -33,8 +33,6 @@ export default {
         this.chartSettings = {
           dimension: ['chg'],
           metrics: ['num'],
-          area: true,
-          label: {formatter: '{a} %'},
           labelMap: {
             num: '数量',
             chg: '涨跌幅'
